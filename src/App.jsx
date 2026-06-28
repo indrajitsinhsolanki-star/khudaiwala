@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
+import { PrivacyPolicy, TermsConditions } from "./LegalPages";
+import { CategoryGrid, EquipmentList } from "./MachineCategories";
 
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
@@ -677,7 +679,9 @@ export default function App() {
   const [lang, setLang] = useState("en");
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedSlug, setSelectedSlug] = useState("");
-  const t = T[lang];
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
+    const t = T[lang];
   const CATS = lang === "hi" ? CATS_HI : lang === "gu" ? CATS_GU : CATS_EN;
 
   const [tab, setTab] = useState("discover");
@@ -705,6 +709,8 @@ export default function App() {
       if (session?.user) fetchUserProfile(session.user.id);
     });
     return () => subscription.unsubscribe();
+    window.addEventListener('showPrivacy', () => setShowPrivacy(true));
+    window.addEventListener('showTerms', () => setShowTerms(true));
   }, []);
 
   const fetchUserProfile = async (userId) => {
@@ -836,6 +842,7 @@ export default function App() {
                 {filtered.map((m) => <MachineCard key={m.id} m={m} onBook={setBookingM} lang={lang} />)}
               </div>
             )}
+            <CategoryGrid lang={lang} onCategorySelect={(cat) => setCatFilter(lang === "hi" ? { "Backhoe Loader": "बैकहो लोडर", "Excavator": "खुदाई मशीन", "Motor Grader": "मोटर ग्रेडर", "Compactor": "कॉम्पैक्टर", "Crane": "क्रेन" }[cat] || cat : lang === "gu" ? { "Backhoe Loader": "બૅકહો લોડર", "Excavator": "ખોદકામ મશીન", "Motor Grader": "મોટર ગ્રેડર", "Compactor": "કૉમ્પૅક્ટર", "Crane": "ક્રેન" }[cat] || cat : cat)} />
             <WhySection lang={lang} onRegister={() => setShowReg(true)} />
             <TestimonialsSection lang={lang} />
             <FAQSection lang={lang} />
@@ -1000,6 +1007,8 @@ export default function App() {
         </div>
       )}
 
+      {showPrivacy && <PrivacyPolicy onBack={() => setShowPrivacy(false)} />}
+      {showTerms && <TermsConditions onBack={() => setShowTerms(false)} />}
       {showReg && <RegisterModal onClose={() => setShowReg(false)} onSuccess={(role, form) => { setRegSuccess({ role, form }); setShowReg(false); fetchMachines(); fetchMechanics(); }} lang={lang} />}
 
       {regSuccess && (
