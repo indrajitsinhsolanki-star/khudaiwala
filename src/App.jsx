@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
-
+import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
   earth: "#1A1208", earthMid: "#2D2010", soil: "#5C3D11",
@@ -685,6 +685,7 @@ export default function App() {
               <span style={{ fontSize: 13, color: C.gray600, fontWeight: 500 }}>{t.availNow}</span>
               <span style={{ marginLeft: "auto", fontSize: 12, color: C.gray400 }}>{filtered.length} {t.machines}</span>
             </div>
+            <StatsSection lang={lang} />
             {loading ? (
               <div style={{ textAlign: "center", padding: 48, color: C.gray400 }}><div style={{ fontSize: 32, marginBottom: 12 }}>⏳</div>{lang === "hi" ? "लोड हो रहा है..." : "Loading..."}</div>
             ) : filtered.length === 0 ? (
@@ -699,6 +700,10 @@ export default function App() {
           </div>
         )}
 
+        <WhySection lang={lang} onRegister={() => setShowReg(true)} />
+<TestimonialsSection lang={lang} />
+<FAQSection lang={lang} />
+<CitiesFooter lang={lang} />
         {/* BOOKINGS */}
         {tab === "bookings" && (
           <div style={{ paddingTop: 16 }}>
