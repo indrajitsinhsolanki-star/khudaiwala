@@ -198,7 +198,7 @@ export function CategoryGrid({ lang, onCategorySelect }) {
   const labels = {
     en: { title: "Browse by Category", sub: "Find the perfect machine for your construction needs" },
     hi: { title: "श्रेणी के अनुसार खोजें", sub: "अपने निर्माण कार्य के लिए सही मशीन खोजें" },
-    gu: { title: "શ્રેણી પ્રમાણે શોધો", sub: "તમારા બાંધકામ માટે સાચું મશીન શોધો" };
+    gu: { title: "શ્રેણી પ્રમાણે શોધો", sub: "તમારા બાંધકામ માટે સાચું મશીન શોધો" },
   };
   const l = labels[lang] || labels.en;
 
