@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
+import { PrivacyPolicy, TermsConditions } from "./LegalPages";
+import { CategoryGrid } from "./MachineCategories";
+import { AboutPage } from "./AboutPage";
 
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
@@ -677,6 +680,9 @@ export default function App() {
   const [lang, setLang] = useState("en");
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedSlug, setSelectedSlug] = useState("");
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   const t = T[lang];
   const CATS = lang === "hi" ? CATS_HI : lang === "gu" ? CATS_GU : CATS_EN;
 
