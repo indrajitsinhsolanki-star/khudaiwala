@@ -338,6 +338,7 @@ export function CitiesFooter({ lang }) {
           <div style={{ fontSize: 11, color: "#6B7280" }}>A product of Surplus Alloys · GST: 24IZEPS7481C1Z1 · Godhra, Gujarat</div>
           <div style={{ fontSize: 11, color: "#6B7280", marginTop: 4 }}>© 2026 KhudaiWala · khudaiwala.online</div>
           <div style={{ marginTop: 16, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <button onClick={() => window.dispatchEvent(new CustomEvent('showAbout'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>About Us</button>
           <button onClick={() => window.dispatchEvent(new CustomEvent('showPrivacy'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>Privacy Policy</button>
           <button onClick={() => window.dispatchEvent(new CustomEvent('showTerms'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>Terms & Conditions</button>
 </div>

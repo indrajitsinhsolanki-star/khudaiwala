@@ -3,6 +3,7 @@ import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
 import { PrivacyPolicy, TermsConditions } from "./LegalPages";
+import { AboutPage } from "./AboutPage";
 import { CategoryGrid, EquipmentList } from "./MachineCategories";
 
 const C = {
@@ -680,6 +681,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedSlug, setSelectedSlug] = useState("");
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
     const t = T[lang];
   const CATS = lang === "hi" ? CATS_HI : lang === "gu" ? CATS_GU : CATS_EN;
@@ -710,6 +712,7 @@ export default function App() {
     });
     return () => subscription.unsubscribe();
     window.addEventListener('showPrivacy', () => setShowPrivacy(true));
+    window.addEventListener('showAbout', () => setShowAbout(true));
     window.addEventListener('showTerms', () => setShowTerms(true));
   }, []);
 
@@ -1008,6 +1011,7 @@ export default function App() {
       )}
 
       {showPrivacy && <PrivacyPolicy onBack={() => setShowPrivacy(false)} />}
+      {showAbout && <AboutPage lang={lang} onBack={() => setShowAbout(false)} onRegister={() => { setShowAbout(false); setShowReg(true); }} />}
       {showTerms && <TermsConditions onBack={() => setShowTerms(false)} />}
       {showReg && <RegisterModal onClose={() => setShowReg(false)} onSuccess={(role, form) => { setRegSuccess({ role, form }); setShowReg(false); fetchMachines(); fetchMechanics(); }} lang={lang} />}
 
