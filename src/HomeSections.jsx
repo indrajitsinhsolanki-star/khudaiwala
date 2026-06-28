@@ -284,7 +284,7 @@ export function TestimonialsSection({ lang }) {
 }
 
 // ─── CITIES FOOTER ────────────────────────────────────────────────────────────
-export function CitiesFooter({ lang }) {
+export function CitiesFooter({ lang, onShowAbout, onShowPrivacy, onShowTerms }) {
   const titles = {
     en: { title: "Available Across India", sub: "Book JCB and excavators in your city" },
     hi: { title: "इन शहरों में उपलब्ध", sub: "अपने शहर में JCB और खुदाई मशीन किराए पर लें" },
@@ -337,11 +337,17 @@ export function CitiesFooter({ lang }) {
           <div style={{ fontSize: 11, color: "#9CA3AF", marginBottom: 12 }}>{footer}</div>
           <div style={{ fontSize: 11, color: "#6B7280" }}>A product of Surplus Alloys · GST: 24IZEPS7481C1Z1 · Godhra, Gujarat</div>
           <div style={{ fontSize: 11, color: "#6B7280", marginTop: 4 }}>© 2026 KhudaiWala · khudaiwala.online</div>
-          <div style={{ marginTop: 16, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-          <button onClick={() => window.dispatchEvent(new CustomEvent('showAbout'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>About Us</button>
-          <button onClick={() => window.dispatchEvent(new CustomEvent('showPrivacy'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>Privacy Policy</button>
-          <button onClick={() => window.dispatchEvent(new CustomEvent('showTerms'))} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>Terms & Conditions</button>
-</div>
+          <div style={{ marginTop: 16, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <button onClick={onShowAbout} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>
+              {lang === "hi" ? "हमारे बारे में" : lang === "gu" ? "અમારા વિશે" : "About Us"}
+            </button>
+            <button onClick={onShowPrivacy} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>
+              {lang === "hi" ? "गोपनीयता नीति" : lang === "gu" ? "ગોપનીયતા નીતિ" : "Privacy Policy"}
+            </button>
+            <button onClick={onShowTerms} style={{ background: "none", border: "none", color: "#9CA3AF", fontSize: 11, cursor: "pointer", textDecoration: "underline" }}>
+              {lang === "hi" ? "नियम और शर्तें" : lang === "gu" ? "નિયમો અને શરતો" : "Terms & Conditions"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

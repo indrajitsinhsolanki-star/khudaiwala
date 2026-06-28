@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
-import { PrivacyPolicy, TermsConditions } from "./LegalPages";
-import { AboutPage } from "./AboutPage";
-import { CategoryGrid, EquipmentList } from "./MachineCategories";
 
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
@@ -680,10 +677,7 @@ export default function App() {
   const [lang, setLang] = useState("en");
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedSlug, setSelectedSlug] = useState("");
-  const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
-  const [showTerms, setShowTerms] = useState(false);
-    const t = T[lang];
+  const t = T[lang];
   const CATS = lang === "hi" ? CATS_HI : lang === "gu" ? CATS_GU : CATS_EN;
 
   const [tab, setTab] = useState("discover");
@@ -711,9 +705,6 @@ export default function App() {
       if (session?.user) fetchUserProfile(session.user.id);
     });
     return () => subscription.unsubscribe();
-    window.addEventListener('showPrivacy', () => setShowPrivacy(true));
-    window.addEventListener('showAbout', () => setShowAbout(true));
-    window.addEventListener('showTerms', () => setShowTerms(true));
   }, []);
 
   const fetchUserProfile = async (userId) => {
@@ -845,11 +836,10 @@ export default function App() {
                 {filtered.map((m) => <MachineCard key={m.id} m={m} onBook={setBookingM} lang={lang} />)}
               </div>
             )}
-            <CategoryGrid lang={lang} onCategorySelect={(cat) => setCatFilter(lang === "hi" ? { "Backhoe Loader": "बैकहो लोडर", "Excavator": "खुदाई मशीन", "Motor Grader": "मोटर ग्रेडर", "Compactor": "कॉम्पैक्टर", "Crane": "क्रेन" }[cat] || cat : lang === "gu" ? { "Backhoe Loader": "બૅકહો લોડર", "Excavator": "ખોદકામ મશીન", "Motor Grader": "મોટર ગ્રેડર", "Compactor": "કૉમ્પૅક્ટર", "Crane": "ક્રેન" }[cat] || cat : cat)} />
             <WhySection lang={lang} onRegister={() => setShowReg(true)} />
             <TestimonialsSection lang={lang} />
             <FAQSection lang={lang} />
-            <CitiesFooter lang={lang} />
+            <CitiesFooter lang={lang} onShowAbout={() => setShowAbout(true)} onShowPrivacy={() => setShowPrivacy(true)} onShowTerms={() => setShowTerms(true)} />
           </div>
         )}
 
@@ -1010,9 +1000,6 @@ export default function App() {
         </div>
       )}
 
-      {showPrivacy && <PrivacyPolicy onBack={() => setShowPrivacy(false)} />}
-      {showAbout && <AboutPage lang={lang} onBack={() => setShowAbout(false)} onRegister={() => { setShowAbout(false); setShowReg(true); }} />}
-      {showTerms && <TermsConditions onBack={() => setShowTerms(false)} />}
       {showReg && <RegisterModal onClose={() => setShowReg(false)} onSuccess={(role, form) => { setRegSuccess({ role, form }); setShowReg(false); fetchMachines(); fetchMechanics(); }} lang={lang} />}
 
       {regSuccess && (
@@ -1026,6 +1013,23 @@ export default function App() {
             </div>
             <button onClick={() => setRegSuccess(null)} style={{ background: C.orange, color: C.white, border: "none", borderRadius: 12, padding: "13px", fontWeight: 800, fontSize: 15, cursor: "pointer", width: "100%" }}>{t.exploreBtn}</button>
           </div>
+        </div>
+      )}
+
+      {/* Full Screen Pages — rendered on top of everything */}
+      {showAbout && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 5000, overflowY: "auto" }}>
+          <AboutPage lang={lang} onBack={() => setShowAbout(false)} onRegister={() => { setShowAbout(false); setShowReg(true); }} />
+        </div>
+      )}
+      {showPrivacy && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 5000, overflowY: "auto" }}>
+          <PrivacyPolicy onBack={() => setShowPrivacy(false)} />
+        </div>
+      )}
+      {showTerms && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 5000, overflowY: "auto" }}>
+          <TermsConditions onBack={() => setShowTerms(false)} />
         </div>
       )}
     </div>

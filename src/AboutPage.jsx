@@ -73,11 +73,11 @@ const CONTENT = {
     leadershipSub: "KhudaiWala is not built by people who read about construction in a boardroom. It is built by someone who has stood on construction sites and seen this problem firsthand.",
     leaders: [
       {
-        name: "Asmitakumari Indrajitsinh Solanki",
+        name: "Indrajitsinh Solanki",
         title: "Founder & CEO",
-        location: "Godhra, Gujarat",
+        location: "Gujarat",
         exp: "Business & Operations",
-        bio: "Asmita founded KhudaiWala with a clear-eyed understanding of what India's unorganized construction equipment market needs: not a polished corporate app, but a practical, vernacular, trust-first marketplace. Operating under Surplus Alloys, she brings the entrepreneur's instinct for solving real problems for real people — starting with the JCB owners and contractors of Gujarat who have been underserved by every digital platform that came before.",
+        bio: "Indrajit founded KhudaiWala with a clear-eyed understanding of what India's unorganized construction equipment market needs: not a polished corporate app, but a practical, vernacular, trust-first marketplace. Operating under Surplus Alloys, he brings the entrepreneur's instinct for solving real problems for real people — starting with the JCB owners and contractors of India who have been underserved by every digital platform that came before.",
         badges: ["Solo Founder", "Gujarat-Based", "GST Registered", "Construction Market Expert"],
         initial: "A",
       }
