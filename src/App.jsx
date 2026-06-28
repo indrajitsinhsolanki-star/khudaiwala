@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection } from "./HomeSections";
+
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
   earth: "#1A1208", earthMid: "#2D2010", soil: "#5C3D11",
@@ -253,12 +254,142 @@ const T = {
     ],
     back: "← वापस",
     registeredAs: "के रूप में रजिस्टर हुए",
+  },
+  gu: {
+    tagline: "ભારતનું અર્થમૂવર માર્કેટપ્લેસ",
+    liveNear: "તમારી નજીક",
+    available: "ઉપલબ્ધ",
+    joinFree: "જોડાઓ મફત",
+    find: "શોધો",
+    bookings: "બુકિંગ",
+    mechanics: "મિકેનિક",
+    list: "લિસ્ટ",
+    adTag: "🎯 મશીન માલિકો માટે",
+    adHeadline1: "તમારું JCB ખાલી છે?",
+    adHeadline2: "રોજ ₹8,000+ કમાઓ",
+    adSub: "મફત લિસ્ટિંગ · GPS ટ્રેકિંગ · તરત પેમેન્ટ",
+    adBtn: "હમણાં રજિસ્ટર કરો — મફત →",
+    searchPlaceholder: "JCB, ખોદકામ મશીન, શહેર શોધો...",
+    availNow: "હમણાં ઉપલબ્ધ",
+    machines: "મશીનો",
+    noMachines: "હજી કોઈ મશીન નથી. પહેલા તમારું મશીન લિસ્ટ કરો!",
+    bookNow: "હમણાં બુક કરો",
+    unavailable: "ઉપલબ્ધ નથી",
+    verified: "✓ ચકાસાયેલ",
+    fuel: "ઇંધણ",
+    engineHrs: "એન્જિન કલાક",
+    status: "સ્થિતિ",
+    liveBtn: "લાઇવ →",
+    owner: "માલિક",
+    myBookings: "મારી બુકિંગ",
+    myBookingsSub: "તમારી ચાલુ અને જૂની બુકિંગ",
+    registerToBook: "બુકિંગ જોવા માટે રજિસ્ટર કરો",
+    joinBtn: "KhudaiWala સાથે જોડાઓ — મફત",
+    noBookings: "હજી કોઈ બુકિંગ નથી. મશીન શોધો અને શરૂ કરો.",
+    findMechanics: "મિકેનિક શોધો",
+    findMechanicsSub: "ચકાસાયેલ રિપેર અને સર્વિસ નિષ્ણાતો",
+    emergency: "🔧 મશીન બગડ્યું? હમણાં કૉલ કરો:",
+    noMechanics: "હજી કોઈ મિકેનિક નથી. પહેલા રજિસ્ટર કરો!",
+    registerMechanic: "મિકેનિક તરીકે રજિસ્ટર કરો",
+    bookMechanic: "મિકેનિક બુક કરો",
+    call: "📞 કૉલ",
+    specialty: "વિશેષજ્ઞતા",
+    listMachine: "તમારું મશીન લિસ્ટ કરો",
+    listMachineSub: "10,000+ ભાડૂતો સુધી પહોંચો. રોજ કમાઓ.",
+    earningPotential: "💰 કમાણીની શક્યતા",
+    freeWith: "🎁 રજિસ્ટ્રેશન સાથે મફત",
+    listBtn: "🚜 મારું મશીન લિસ્ટ કરો — મફત →",
+    listNote: "24 કલાકમાં ચકાસણી · કોઈ છૂપો ચાર્જ નહીં · મફત IoT ડિવાઇસ",
+    workDate: "કામની તારીખ",
+    duration: "સમય",
+    hours: "કલાક",
+    workDetails: "કામની વિગત",
+    workPlaceholder: "કામ જણાવો: ખોદકામ, પાયો, રોડ કામ...",
+    machineRate: "મશીન દર",
+    platformFee: "પ્લેટફોર્મ ફી (5%)",
+    total: "કુલ",
+    confirmBooking: "બુકિંગ પાક્કી કરો",
+    processing: "પ્રોસેસ થઈ રહ્યું છે...",
+    bookingConfirmed: "બુકિંગ પાક્કી થઈ!",
+    ownerCall: "📱 માલિક 30 મિનિટમાં ફોન કરશે",
+    viewBookings: "મારી બુકિંગ જુઓ",
+    joinTitle: "KHUDAIWALA સાથે જોડાઓ",
+    whoAreYou: "તમે કોણ છો?",
+    whoSub: "કઈ ભૂમિકામાં જોડાઈ રહ્યા છો?",
+    roles: [
+      { key: "owner", icon: "🚜", title: "મશીન માલિક", sub: "મારી પાસે JCB / ખોદકામ મશીન છે" },
+      { key: "operator", icon: "👷", title: "ઓપરેટર / ડ્રાઇવર", sub: "હું ભારે મશીન ચલાવું છું" },
+      { key: "mechanic", icon: "🔧", title: "મિકેનિક", sub: "હું મશીન રિપેર કરું છું" },
+      { key: "hirer", icon: "🏗️", title: "મશીન જોઈએ છે", sub: "કોન્ટ્રાક્ટર / બિલ્ડર / ડેવલપર" },
+    ],
+    cancel: "રદ કરો",
+    registerAs: "રજિસ્ટર કરો",
+    regFree: "મફત · 2 મિનિટ",
+    yourName: "તમારું પૂરું નામ",
+    phone: "મોબાઇલ નંબર",
+    whatsapp: "WhatsApp નંબર (અલગ હોય તો)",
+    city: "તમારું શહેર",
+    state: "તમારું રાજ્ય",
+    machineType: "મશીનનો પ્રકાર",
+    ratePerHour: "પ્રતિ કલાક દર (₹)",
+    specialtyLabel: "તમારી વિશેષજ્ઞતા",
+    freePerks: [
+      "મફત IoT GPS ટ્રેકિંગ ડિવાઇસ",
+      "ચકાસાયેલ બેજ તમારી લિસ્ટિંગ પર",
+      "WhatsApp પર બુકિંગ અલર્ટ",
+      "24 કલાકમાં પેમેન્ટ"
+    ],
+    registerBtn: "મફત રજિસ્ટર કરો →",
+    registering: "રજિસ્ટર થઈ રહ્યું છે...",
+    regNote: "24 કલાકમાં ચકાસણી · કોઈ સ્પામ નહીં · કોઈ છૂપો ચાર્જ નહીં",
+    welcomeTitle: "KhudaiWala માં આપનું સ્વાગત છે!",
+    regNextSteps: [
+      "પ્રોફાઇલ તપાસ (24 કલાક)",
+      "ચકાસાયેલ બેજ મળશે",
+      "કામની વિનંતી આવવા લાગશે",
+      "સાપ્તાહિક પેમેન્ટ તમારા બેંકમાં"
+    ],
+    exploreBtn: "KhudaiWala જુઓ →",
+    namePH: "રમેશ પટેલ",
+    phonePH: "+91 98765 43210",
+    cityPH: "સુરત",
+    statePH: "ગુજરાત",
+    machinePH: "JCB 3CX / હિટાચી EX200",
+    ratePH: "1800",
+    specialtyPH: "JCB રિપેર / હાઇડ્રોલિક / એન્જિન",
+    registerPrompt: "મશીન બુક કરવા માટે પહેલા રજિસ્ટર કરો.",
+    earningRows: [
+      ["JCB બૅકહો લોડર", "₹1,800–₹2,200/કલાક", "₹25,000–40,000/મહિનો"],
+      ["હાઇડ્રોલિક ખોદકામ મશીન", "₹2,500–₹3,500/કલાક", "₹45,000–65,000/મહિનો"],
+      ["મોટર ગ્રેડર", "₹2,200–₹3,000/કલાક", "₹38,000–55,000/મહિનો"],
+    ],
+    freeItems: [
+      "IoT GPS ટ્રેકર — મફત લગાવવામાં આવશે",
+      "ચકાસાયેલ માલિક બેજ",
+      "WhatsApp પર તરત બુકિંગ અલર્ટ",
+      "રોજ કમાણી ડેશબોર્ડ",
+      "મશીન બગડ્યે મિકેનિક સપોર્ટ",
+    ],
+    back: "← પાછળ",
+    registeredAs: "તરીકે રજિસ્ટર થયા",
+    myBookingsSub: "તમારી ચાલુ અને જૂની બુકિંગ",
+    registerToBook: "બુકિંગ જોવા રજિસ્ટર કરો",
+    joinBtn: "KhudaiWala સાથે મફત જોડાઓ",
+    noBookings: "હજી કોઈ બુકિંગ નથી.",
+    whoAreYou: "તમે કોણ છો?",
+    whoSub: "ક્યા રૂપમાં જોડાઈ રહ્યા છો?",
   }
 };
 
 const CATS_EN = ["All", "Backhoe Loader", "Excavator", "Motor Grader", "Compactor", "Crane"];
 const CATS_HI = ["सभी", "बैकहो लोडर", "खुदाई मशीन", "मोटर ग्रेडर", "कॉम्पैक्टर", "क्रेन"];
-const CAT_MAP = { "सभी": "All", "बैकहो लोडर": "Backhoe Loader", "खुदाई मशीन": "Excavator", "मोटर ग्रेडर": "Motor Grader", "कॉम्पैक्टर": "Compactor", "क्रेन": "Crane" };
+const CATS_GU = ["બધા", "બૅકહો લોડર", "ખોદકામ મશીન", "મોટર ગ્રેડર", "કૉમ્પૅક્ટર", "ક્રેન"];
+const CAT_MAP = {
+  "सभी": "All", "बैकहो लोडर": "Backhoe Loader", "खुदाई मशीन": "Excavator",
+  "मोटर ग्रेडर": "Motor Grader", "कॉम्पैक्टर": "Compactor", "क्रेन": "Crane",
+  "બધા": "All", "બૅકહો લોડર": "Backhoe Loader", "ખોદકામ મશીન": "Excavator",
+  "મોટર ગ્રેડર": "Motor Grader", "કૉમ્પૅક્ટર": "Compactor", "ક્રેન": "Crane",
+};
 
 function Stars({ r }) {
   return <span style={{ color: "#F59E0B", fontSize: 12 }}>{"★".repeat(Math.floor(r))}{"☆".repeat(5 - Math.floor(r))} <span style={{ color: C.gray400 }}>{r}</span></span>;
@@ -277,13 +408,15 @@ function FuelBar({ pct }) {
 }
 
 function LangToggle({ lang, setLang }) {
+  const next = lang === "en" ? "hi" : lang === "hi" ? "gu" : "en";
+  const label = lang === "en" ? "हिं" : lang === "hi" ? "ગુ" : "EN";
   return (
-    <button onClick={() => setLang(lang === "en" ? "hi" : "en")} style={{
+    <button onClick={() => setLang(next)} style={{
       background: "rgba(255,107,0,0.15)", border: `1.5px solid ${C.orange}`,
       borderRadius: 8, padding: "5px 10px", color: C.orange,
       fontWeight: 800, fontSize: 12, cursor: "pointer", letterSpacing: 0.5
     }}>
-      {lang === "en" ? "हिं" : "EN"}
+      {label}
     </button>
   );
 }
@@ -486,7 +619,7 @@ function MachineCard({ m, onBook, lang }) {
   return (
     <div style={{ background: C.white, borderRadius: 16, boxShadow: "0 2px 16px rgba(0,0,0,0.07)", padding: 18, border: `1.5px solid ${m.is_available ? C.gray200 : C.redLight}`, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, right: 0, background: m.is_available ? C.green : C.red, color: "#fff", fontSize: 9, fontWeight: 800, padding: "3px 12px", borderBottomLeftRadius: 10, letterSpacing: 1 }}>
-        {m.is_available ? (lang === "hi" ? "अभी उपलब्ध" : "AVAILABLE NOW") : (lang === "hi" ? "व्यस्त" : "BUSY")}
+        {m.is_available ? (lang === "hi" ? "अभी उपलब्ध" : lang === "gu" ? "હમણાં ઉપલબ્ધ" : "AVAILABLE NOW") : (lang === "hi" ? "व्यस्त" : lang === "gu" ? "વ્યસ્ત" : "BUSY")}
       </div>
       <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
         <div style={{ width: 52, height: 52, borderRadius: 12, background: m.is_available ? C.orangeDim : C.redLight, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, flexShrink: 0 }}>🚜</div>
@@ -541,7 +674,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [selectedSlug, setSelectedSlug] = useState("");
   const t = T[lang];
-  const CATS = lang === "hi" ? CATS_HI : CATS_EN;
+  const CATS = lang === "hi" ? CATS_HI : lang === "gu" ? CATS_GU : CATS_EN;
 
   const [tab, setTab] = useState("discover");
   const [machines, setMachines] = useState([]);
@@ -595,7 +728,7 @@ export default function App() {
     setMyBookings(data || []);
   };
 
-  const getEnglishCat = (c) => lang === "hi" ? (CAT_MAP[c] || "All") : c;
+  const getEnglishCat = (c) => (lang === "hi" || lang === "gu") ? (CAT_MAP[c] || "All") : c;
 
   const filtered = machines.filter((m) => {
     const engCat = getEnglishCat(catFilter);
@@ -685,9 +818,8 @@ export default function App() {
               <span style={{ fontSize: 13, color: C.gray600, fontWeight: 500 }}>{t.availNow}</span>
               <span style={{ marginLeft: "auto", fontSize: 12, color: C.gray400 }}>{filtered.length} {t.machines}</span>
             </div>
-            <StatsSection lang={lang} />
             {loading ? (
-              <div style={{ textAlign: "center", padding: 48, color: C.gray400 }}><div style={{ fontSize: 32, marginBottom: 12 }}>⏳</div>{lang === "hi" ? "लोड हो रहा है..." : "Loading..."}</div>
+              <div style={{ textAlign: "center", padding: 48, color: C.gray400 }}><div style={{ fontSize: 32, marginBottom: 12 }}>⏳</div>{lang === "hi" ? "लोड हो रहा है..." : lang === "gu" ? "લોડ થઈ રહ્યું છે..." : "Loading..."}</div>
             ) : filtered.length === 0 ? (
               <div style={{ textAlign: "center", padding: 48, color: C.gray400 }}>
                 <div style={{ fontSize: 48, marginBottom: 12 }}>🚧</div>{t.noMachines}
@@ -697,13 +829,13 @@ export default function App() {
                 {filtered.map((m) => <MachineCard key={m.id} m={m} onBook={setBookingM} lang={lang} />)}
               </div>
             )}
+            <WhySection lang={lang} onRegister={() => setShowReg(true)} />
+            <TestimonialsSection lang={lang} />
+            <FAQSection lang={lang} />
+            <CitiesFooter lang={lang} />
           </div>
         )}
 
-        <WhySection lang={lang} onRegister={() => setShowReg(true)} />
-<TestimonialsSection lang={lang} />
-<FAQSection lang={lang} />
-<CitiesFooter lang={lang} />
         {/* BOOKINGS */}
         {tab === "bookings" && (
           <div style={{ paddingTop: 16 }}>
