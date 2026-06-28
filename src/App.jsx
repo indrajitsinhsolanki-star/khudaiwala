@@ -1,6 +1,7 @@
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
+import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
