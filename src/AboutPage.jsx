@@ -14,13 +14,13 @@ const CONTENT = {
     // Header
     badge: "Our Story",
     heroTitle: "We Started With One Question",
-    heroQ: "\"Why does a JCB owner in Godhra have no way to find work digitally — while his machine sits idle?\"",
+    heroQ: "\"Why does a JCB owner in India have no way to find work digitally — while his machine sits idle?\"",
     heroSub: "KhudaiWala was born to answer that. We are building India's largest digital marketplace for earth-moving equipment — not for corporates, but for the 80 lakh small machine owners, operators, mechanics, and contractors who power India's construction industry from the ground up.",
 
     // Mission
     missionBadge: "Our Mission",
     missionTitle: "Digitize the Last Mile of India's Construction Economy",
-    missionText: "India builds the fastest of any country on earth — airports, highways, metros, and millions of homes. But the machines doing this work are owned by small operators with zero digital presence. They find work through phone calls, middlemen, and word of mouth. Payments are cash. Verification is trust by association.\n\nKhudaiWala exists to change that — permanently. Our mission is to bring every JCB owner, every excavator operator, every diesel mechanic and every contractor onto one verified, transparent, multilingual digital platform. Not just for metros. For Godhra, Meerut, Warangal, and every Tier 2 and Tier 3 city where India's real construction happens.",
+    missionText: "India builds the fastest of any country on earth — airports, highways, metros, and millions of homes. But the machines doing this work are owned by small operators with zero digital presence. They find work through phone calls, middlemen, and word of mouth. Payments are cash. Verification is trust by association.\n\nKhudaiWala exists to change that — permanently. Our mission is to bring every JCB owner, every excavator operator, every diesel mechanic and every contractor onto one verified, transparent, multilingual digital platform. Not just for metros. For Meerut, Warangal, and every Tier 2 and Tier 3 city where India's real construction happens.",
     missionDiff: "What makes our mission different from competitors: We are not building for the organized 5%. We are building for the unorganized 95% — in their language, on their smartphone, at their level of digital literacy.",
 
     // Vision
@@ -89,7 +89,7 @@ const CONTENT = {
     diffs: [
       { them: "Built for organized large fleet companies", us: "Built for individual owners with 1–5 machines" },
       { them: "English-only interface", us: "Hindi + Gujarati + English from Day 1" },
-      { them: "Focus on metros (Mumbai, Delhi, Bengaluru)", us: "Focus on Tier 2/3 cities first (Godhra, Meerut, Warangal)" },
+      { them: "Focus on metros (Mumbai, Delhi, Bengaluru)", us: "Focus on Tier 2/3 cities first (Mumbai, Meerut, Warangal)" },
       { them: "15-20% commission to middlemen", us: "5% transparent platform fee, paid to platform" },
       { them: "No mechanic network", us: "Verified mechanic linked to every machine" },
       { them: "No IoT tracking for small owners", us: "Free IoT GPS device for every listed machine" },
@@ -105,7 +105,7 @@ const CONTENT = {
   hi: {
     badge: "हमारी कहानी",
     heroTitle: "हमने एक सवाल से शुरुआत की",
-    heroQ: "\"गोधरा में एक JCB मालिक के पास डिजिटल तरीके से काम खोजने का कोई रास्ता क्यों नहीं — जबकि उसकी मशीन खाली खड़ी है?\"",
+    heroQ: "\"India में एक JCB मालिक के पास डिजिटल तरीके से काम खोजने का कोई रास्ता क्यों नहीं — जबकि उसकी मशीन खाली खड़ी है?\"",
     heroSub: "KhudaiWala इसी सवाल का जवाब देने के लिए बना है। हम भारत का सबसे बड़ा अर्थमूवर मार्केटप्लेस बना रहे हैं — कॉर्पोरेट के लिए नहीं, बल्कि 80 लाख छोटे मशीन मालिकों, ऑपरेटरों, मैकेनिकों और ठेकेदारों के लिए।",
     missionBadge: "हमारा मिशन",
     missionTitle: "भारत की निर्माण अर्थव्यवस्था के आखिरी छोर को डिजिटल करना",
@@ -138,11 +138,11 @@ const CONTENT = {
     leadershipSub: "KhudaiWala बोर्डरूम में नहीं बना। इसे उस व्यक्ति ने बनाया जिसने construction sites पर खड़े होकर यह समस्या देखी है।",
     leaders: [
       {
-        name: "Asmitakumari Indrajitsinh Solanki",
+        name: "Indrajitsinh Solanki",
         title: "Founder & CEO",
-        location: "गोधरा, गुजरात",
+        location: "गुजरात",
         exp: "व्यवसाय एवं संचालन",
-        bio: "असमिता ने KhudaiWala इस स्पष्ट समझ के साथ शुरू किया कि भारत के असंगठित निर्माण उपकरण बाज़ार को क्या चाहिए: एक व्यावहारिक, बहुभाषी, भरोसा-पहला मार्केटप्लेस। Surplus Alloys के तहत काम करते हुए, वे गुजरात के JCB मालिकों और ठेकेदारों की असली समस्याओं को हल करने के लिए प्रतिबद्ध हैं।",
+        bio: "CEO ने KhudaiWala इस स्पष्ट समझ के साथ शुरू किया कि भारत के असंगठित निर्माण उपकरण बाज़ार को क्या चाहिए: एक व्यावहारिक, बहुभाषी, भरोसा-पहला मार्केटप्लेस। Surplus Alloys के तहत काम करते हुए, वे गुजरात के JCB मालिकों और ठेकेदारों की असली समस्याओं को हल करने के लिए प्रतिबद्ध हैं।",
         badges: ["Solo Founder", "गुजरात-स्थित", "GST Registered", "निर्माण बाज़ार विशेषज्ञ"],
         initial: "A",
       }
@@ -166,7 +166,7 @@ const CONTENT = {
   gu: {
     badge: "અમારી વાર્તા",
     heroTitle: "અમે એક સવાલથી શરૂ કર્યું",
-    heroQ: "\"ગોધરામાં JCB માલિક પાસે ડિજિટલ રીતે કામ શોધવાનો કોઈ રસ્તો કેમ નથી — જ્યારે તેનું મશીન ખાલી ઊભું છે?\"",
+    heroQ: "\"India JCB માલિક પાસે ડિજિટલ રીતે કામ શોધવાનો કોઈ રસ્તો કેમ નથી — જ્યારે તેનું મશીન ખાલી ઊભું છે?\"",
     heroSub: "KhudaiWala આ સવાલનો જવાબ આપવા માટે બન્યું. અમે ભારતનું સૌથી મોટું અર્થ-મૂવિંગ ઇક્વિપમેન્ટ માર્કેટ્પ્લેસ બનાવી રહ્યા છીએ — 80 લાખ નાના મશીન માલિકો, ઓપરેટર, મિકેનિક અને ઠેકેદારો માટે.",
     missionBadge: "અમારું મિશન",
     missionTitle: "ભારતની બાંધકામ અર્થવ્યવસ્થાના છેલ્લા ભાગને ડિજિટલ કરવું",
@@ -199,11 +199,11 @@ const CONTENT = {
     leadershipSub: "KhudaiWala boardroom માં નહીં, construction sites પર ઊભા રહીને આ સમસ્યા જોઈ તેણે બનાવ્યું.",
     leaders: [
       {
-        name: "Asmitakumari Indrajitsinh Solanki",
+        name: "Indrajitsinh Solanki",
         title: "Founder & CEO",
-        location: "ગોધરા, ગુજરાત",
+        location: "ગુજરાત",
         exp: "વ્યવસાય અને સંચાલન",
-        bio: "અસ્મિતાએ KhudaiWala ની સ્થાપના ભારતના અસંગઠિત બાંધકામ ઉપકરણ બજારની જરૂરિયાત સ્પષ્ટ સમજ સાથે કરી — ગુજરાતના JCB માલિકો અને ઠેકેદારોની સાચી સમસ્યાઓ ઉકેલવા.",
+        bio: "CEO એ KhudaiWala ની સ્થાપના ભારતના અસંગઠિત બાંધકામ ઉપકરણ બજારની જરૂરિયાત સ્પષ્ટ સમજ સાથે કરી — ગુજરાતના JCB માલિકો અને ઠેકેદારોની સાચી સમસ્યાઓ ઉકેલવા.",
         badges: ["Solo Founder", "ગુજરાત-સ્થિત", "GST Registered", "બાંધકામ બજાર નિષ્ણાત"],
         initial: "A",
       }
