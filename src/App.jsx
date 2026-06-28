@@ -1,4 +1,3 @@
-import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { CityPage, BlogPost, CityBlogHome } from "./CityPages";
@@ -540,7 +539,7 @@ function MachineCard({ m, onBook, lang }) {
 export default function App() {
   const [lang, setLang] = useState("en");
   const [currentPage, setCurrentPage] = useState("home");
-const [selectedSlug, setSelectedSlug] = useState("");
+  const [selectedSlug, setSelectedSlug] = useState("");
   const t = T[lang];
   const CATS = lang === "hi" ? CATS_HI : CATS_EN;
 
@@ -645,7 +644,11 @@ const [selectedSlug, setSelectedSlug] = useState("");
           </div>
           <div style={{ display: "flex", borderTop: "1px solid #2D2010", overflowX: "auto" }}>
             {TABS.map((tb) => (
-              <button key={tb.key} onClick={() => setTab(tb.key)} style={{ flex: 1, padding: "10px 4px", border: "none", background: "transparent", color: tab === tb.key ? C.orange : C.gray400, fontWeight: tab === tb.key ? 700 : 400, fontSize: 11, borderBottom: tab === tb.key ? `2px solid ${C.orange}` : "2px solid transparent", cursor: "pointer", whiteSpace: "nowrap", minWidth: 56 }}>
+              <button key={tb.key} onClick={() => {
+                setTab(tb.key);
+                if (tb.key === "citiesblog") setCurrentPage("cities");
+                else setCurrentPage("home");
+              }} style={{ flex: 1, padding: "10px 4px", border: "none", background: "transparent", color: tab === tb.key ? C.orange : C.gray400, fontWeight: tab === tb.key ? 700 : 400, fontSize: 11, borderBottom: tab === tb.key ? `2px solid ${C.orange}` : "2px solid transparent", cursor: "pointer", whiteSpace: "nowrap", minWidth: 56 }}>
                 {tb.icon} {tb.label}
               </button>
             ))}
@@ -778,7 +781,6 @@ const [selectedSlug, setSelectedSlug] = useState("");
         )}
 
         {/* LIST */}
-        {tab === "citiesblog" && setCurrentPage("cities")}
         {tab === "list" && (
           <div style={{ paddingTop: 16 }}>
             <div style={{ fontWeight: 900, fontSize: 18, color: C.earth, marginBottom: 4 }}>{t.listMachine}</div>
@@ -806,39 +808,31 @@ const [selectedSlug, setSelectedSlug] = useState("");
           </div>
         )}
       </div>
-{/* City Pages and Blog */}
-{currentPage === "cities" && (
-  <CityBlogHome
-    onCityClick={(slug) => { setSelectedSlug(slug); setCurrentPage("city"); }}
-    onBlogClick={(slug) => { setSelectedSlug(slug); setCurrentPage("blog"); }}
-    onBack={() => setCurrentPage("home")}
-  />
-)}
-{currentPage === "city" && (
-  <CityPage slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
-)}
-{currentPage === "blog" && (
-  <BlogPost slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
-)}
-      {/* Bottom Nav */}
+
       {/* City Pages and Blog */}
-{currentPage === "cities" && (
-  <CityBlogHome
-    onCityClick={(slug) => { setSelectedSlug(slug); setCurrentPage("city"); }}
-    onBlogClick={(slug) => { setSelectedSlug(slug); setCurrentPage("blog"); }}
-    onBack={() => setCurrentPage("home")}
-  />
-)}
-{currentPage === "city" && (
-  <CityPage slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
-)}
-{currentPage === "blog" && (
-  <BlogPost slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
-)}
+      {currentPage === "cities" && (
+        <CityBlogHome
+          onCityClick={(slug) => { setSelectedSlug(slug); setCurrentPage("city"); }}
+          onBlogClick={(slug) => { setSelectedSlug(slug); setCurrentPage("blog"); }}
+          onBack={() => { setCurrentPage("home"); setTab("discover"); }}
+        />
+      )}
+      {currentPage === "city" && (
+        <CityPage slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
+      )}
+      {currentPage === "blog" && (
+        <BlogPost slug={selectedSlug} onBack={() => setCurrentPage("cities")} />
+      )}
+
+      {/* Bottom Nav */}
       <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: C.white, borderTop: `1px solid ${C.gray200}`, display: "flex", zIndex: 200 }}>
         <div style={{ maxWidth: 520, margin: "0 auto", display: "flex", width: "100%" }}>
           {TABS.map((tb) => (
-            <button key={tb.key} onClick={() => setTab(tb.key)} style={{ flex: 1, padding: "10px 4px 12px", border: "none", background: "transparent", color: tab === tb.key ? C.orange : C.gray400, fontWeight: tab === tb.key ? 700 : 400, fontSize: 10, cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+            <button key={tb.key} onClick={() => {
+              setTab(tb.key);
+              if (tb.key === "citiesblog") setCurrentPage("cities");
+              else setCurrentPage("home");
+            }} style={{ flex: 1, padding: "10px 4px 12px", border: "none", background: "transparent", color: tab === tb.key ? C.orange : C.gray400, fontWeight: tab === tb.key ? 700 : 400, fontSize: 10, cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
               <span style={{ fontSize: 18 }}>{tb.icon}</span>{tb.label}
             </button>
           ))}
@@ -875,15 +869,6 @@ const [selectedSlug, setSelectedSlug] = useState("");
           </div>
         </div>
       )}
-      {currentPage === "cities" && (
-  <CityBlogHome
-    onCityClick={(slug) => { setSelectedSlug(slug); setCurrentPage("city"); }}
-    onBlogClick={(slug) => { setSelectedSlug(slug); setCurrentPage("blog"); }}
-    onBack={() => setCurrentPage("home")}
-  />
-)}
-{currentPage === "city" && <CityPage slug={selectedSlug} onBack={() => setCurrentPage("cities")} />}
-{currentPage === "blog" && <BlogPost slug={selectedSlug} onBack={() => setCurrentPage("cities")} />}
     </div>
   );
 }
