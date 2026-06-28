@@ -644,7 +644,11 @@ function MachineCard({ m, onBook, lang }) {
         <div style={{ textAlign: "center" }}>
           <div style={{ fontSize: 9, color: "#9CA3AF" }}>{t.status}</div>
           <div style={{ fontSize: 10, fontWeight: 700, color: { Idle: "#BFDBFE", Working: "#BBF7D0", "On Job": "#FED7AA", Maintenance: "#FECACA" }[m.iot_status] || "#fff" }}>
-            {lang === "hi" ? { Idle: "निष्क्रिय", Working: "काम पर", "On Job": "काम पर", Maintenance: "मरम्मत" }[m.iot_status] || m.iot_status : m.iot_status || "Idle"}
+            {lang === "hi"
+              ? { Idle: "निष्क्रिय", Working: "काम पर", "On Job": "काम पर", Maintenance: "मरम्मत" }[m.iot_status] || m.iot_status
+              : lang === "gu"
+              ? { Idle: "નિષ્ક્રિય", Working: "કામ પર", "On Job": "કામ પર", Maintenance: "સમારકામ" }[m.iot_status] || m.iot_status
+              : m.iot_status || "Idle"}
           </div>
         </div>
       </div>
@@ -658,7 +662,7 @@ function MachineCard({ m, onBook, lang }) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
           <span style={{ fontSize: 22, fontWeight: 900, color: C.earth }}>₹{(m.rate_per_hour || 0).toLocaleString()}</span>
-          <span style={{ fontSize: 11, color: C.gray400 }}>/{lang === "hi" ? "घंटा" : "hr"}</span>
+          <span style={{ fontSize: 11, color: C.gray400 }}>/{lang === "hi" ? "घंटा" : lang === "gu" ? "કલાક" : "hr"}</span>
         </div>
         <button onClick={() => m.is_available && onBook(m)}
           style={{ background: m.is_available ? C.orange : C.gray200, color: m.is_available ? C.white : C.gray400, border: "none", borderRadius: 10, padding: "10px 20px", fontWeight: 700, fontSize: 13, cursor: m.is_available ? "pointer" : "not-allowed" }}>
@@ -740,16 +744,19 @@ export default function App() {
 
   const avail = machines.filter((m) => m.is_available).length;
 
+  const citiesLabel = lang === "hi" ? "शहर" : lang === "gu" ? "શહેર" : "Cities";
+
   const TABS = [
     { key: "discover", icon: "🔍", label: t.find },
     { key: "bookings", icon: "📋", label: t.bookings },
     { key: "mechanics", icon: "🔧", label: t.mechanics },
     { key: "list", icon: "➕", label: t.list },
-    { key: "citiesblog", icon: "🏙️", label: "Cities" },
+    { key: "citiesblog", icon: "🏙️", label: citiesLabel },
   ];
 
   const statusColors = { pending: [C.orange, C.orangeDim], confirmed: [C.green, C.greenLight], completed: [C.blue, C.blueLight], cancelled: [C.red, C.redLight] };
   const statusHi = { pending: "लंबित", confirmed: "पक्का", completed: "पूरा", cancelled: "रद्द" };
+  const statusGu = { pending: "બાકી", confirmed: "પાક્કું", completed: "પૂર્ણ", cancelled: "રદ" };
 
   return (
     <div style={{ fontFamily: "'Inter', system-ui, sans-serif", background: C.gray50, minHeight: "100vh" }}>
@@ -860,7 +867,7 @@ export default function App() {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                         <div style={{ fontWeight: 700, fontSize: 15, color: C.earth }}>{b.machines?.machine_type}</div>
                         <span style={{ background: bg, color: fg, fontSize: 11, fontWeight: 700, borderRadius: 99, padding: "3px 10px", textTransform: "uppercase" }}>
-                          {lang === "hi" ? statusHi[b.status] || b.status : b.status}
+                          {lang === "hi" ? statusHi[b.status] || b.status : lang === "gu" ? statusGu[b.status] || b.status : b.status}
                         </span>
                       </div>
                       <div style={{ fontSize: 13, color: C.gray600 }}>📅 {b.booking_date} · {b.duration_hours} {t.hours}</div>
@@ -898,7 +905,9 @@ export default function App() {
                         <div style={{ fontSize: 11, color: C.gray400 }}>📍 {m.city}, {m.state}</div>
                       </div>
                       <span style={{ background: m.is_available ? C.greenLight : C.redLight, color: m.is_available ? C.green : C.red, fontSize: 10, fontWeight: 800, borderRadius: 99, padding: "3px 10px" }}>
-                        {m.is_available ? (lang === "hi" ? "उपलब्ध" : "AVAILABLE") : (lang === "hi" ? "व्यस्त" : "BUSY")}
+                        {m.is_available
+                          ? (lang === "hi" ? "उपलब्ध" : lang === "gu" ? "ઉપલબ્ધ" : "AVAILABLE")
+                          : (lang === "hi" ? "व्यस्त" : lang === "gu" ? "વ્યસ્ત" : "BUSY")}
                       </span>
                     </div>
                     <div style={{ background: C.gray50, borderRadius: 10, padding: "8px 12px", fontSize: 12, color: C.gray600, marginBottom: 10 }}>
