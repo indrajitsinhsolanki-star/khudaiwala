@@ -5,7 +5,7 @@ import { StatsSection, WhySection, FAQSection, CitiesFooter, TestimonialsSection
 import { PrivacyPolicy, TermsConditions } from "./LegalPages";
 import { CategoryGrid } from "./MachineCategories";
 import { AboutPage } from "./AboutPage";
-
+import PaymentButton from "./PaymentButton";
 const C = {
   orange: "#FF6B00", orangeLight: "#FF8C38", orangeDim: "#FFF0E6",
   earth: "#1A1208", earthMid: "#2D2010", soil: "#5C3D11",
@@ -671,6 +671,7 @@ function MachineCard({ m, onBook, lang }) {
           style={{ background: m.is_available ? C.orange : C.gray200, color: m.is_available ? C.white : C.gray400, border: "none", borderRadius: 10, padding: "10px 20px", fontWeight: 700, fontSize: 13, cursor: m.is_available ? "pointer" : "not-allowed" }}>
           {m.is_available ? t.bookNow : t.unavailable}
         </button>
+        <PaymentButton machine={m} bookerPhone="" bookerName="" onSuccess={(id) => alert("Booking confirmed! ID: " + id)} />
       </div>
     </div>
   );
